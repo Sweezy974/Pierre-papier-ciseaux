@@ -1,0 +1,74 @@
+
+<head>
+  <meta charset="utf-8">
+<title>Jeu de "Pierre-Papier-Ciseaux" en Javascript</title>
+<script>
+var vous;
+var ordi;
+function Votrechoix(v){
+vous=v;
+document.votrechoix.src='choix'+v+'.png';
+Choixordi();
+}
+//fonction TIRAGE ORDI HASARD
+function Choixordi(){
+ordi=Math.round(Math.random()*2)+1;
+document.choixordi.src='choix'+ordi+'.png';
+Pipaci();
+}
+
+//
+// 1 --> pierre 2-->papier 3-->ciseaux
+function Pipaci(){
+  // si choix utilisateur = 1 (pierre) et ordi = 3(ciseaux)  ou   si choix utiliateur = 2 (feuille) et ordi = 1 pierre ou si choix utiliateur = 3 (ciseaux) et ordi = 2 feuille
+
+if((vous==1) && (ordi==3) || (vous==2) && (ordi==1) || (vous==3) && (ordi==2)){
+  //Affiché Bravo !
+  alert('PERDU!!!!');document.votrechoix.src="choix.gif";document.choixordi.src="choix.gif";
+}
+else{
+  Ordipipaci();}
+}
+
+function Ordipipaci(){
+  // si ordi = 1 (pierre) et choixutilisateur = 3(ciseaux)  ou   si ordi = 2 (feuille) et choixutilisateur = 1 pierre ou si ordi= 3 (ciseaux) et choixutilisateur = 2 feuille
+
+if((ordi==1) && (vous==3) || (ordi==2) && (vous==1) || (ordi==3) && (vous==2))
+{
+  //  affiché Perdu !
+  document.getElementById("res").innerHTML = " Perdu Nullos !!!!!";
+  alert('PERDU!!!!');document.votrechoix.src="choix.gif";document.choixordi.src="choix.gif";}
+else{alert('égalité\nA REFAIRE!');document.votrechoix.src="choix.gif";document.choixordi.src="choix.gif";}
+document.getElementById("res").innerHTML = " Status Quo à Refaire !!!!!";
+}
+</script>
+</head>
+
+
+<body>
+<font face="Lucida Sans Fin">
+<center>
+
+<p>
+CHOISISSEZ UN ELEMENT
+<br>
+<img src="choix1.png" width=100px height=100px onClick="Votrechoix(1)" alt="PIERRE">
+<img src="choix2.png" width=100px height=100px onClick="Votrechoix(2)" alt="PAPIER">
+<img src="choix3.png" width=100px height=100px onClick="Votrechoix(3)" alt="CISEAUX">
+<br>
+<br>
+<br>
+<br>
+VOUS AVEZ CHOISI:
+<br>
+<img src="choix.gif" width=100px height=100px  name="votrechoix" alt="Choisissez bien!">
+<br>
+ORDI:<br>
+<img src="choix.gif" width=100px height=100px  name="choixordi" alt="Je suis pret!">
+<br>s
+<h1>RESULTAT :</h1>
+<h1 id="res" font-size:40px style=color:blue ></h1>
+
+</center>
+</font>
+</body>
